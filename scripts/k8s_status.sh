@@ -11,15 +11,13 @@ get_status() {
         context=$(kubectl config current-context)
         context_info=$(kubectl config get-contexts --no-headers)
         namespace=$(echo "$context_info" | grep "*" | awk '{print $5}')
-        cluster=$(echo "$context_info" | grep "*" | awk '{print $3}')
 
         if [ -z "$namespace" -o -z "$context" -o -z "$context_info" ]
         then
             context="N/A"
-            context_info="N/A"
-            namespace="N/A"
+            namespace="default"
         fi
-        status="ctx:${context} clu:${cluster} ns:${namespace}"
+        status="⎈  ${context}:${namespace}"
     fi
     echo "$status"
 }
