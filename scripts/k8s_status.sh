@@ -20,7 +20,7 @@ get_status() {
         then
             context="N/A"
         fi
-        status="#[fg=blue]⎈  #[fg=red]${context}:#[fg=default]${namespace}"
+        status="#[fg=blue]⎈  ${context} / #[fg=default]${namespace}"
     fi
     echo "$status"
 }
