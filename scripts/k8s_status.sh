@@ -9,6 +9,7 @@ get_status() {
         status="kubectl not found!"
     else
         context=$(kubectl config current-context)
+        context=${context##arn*/}
         context_info=$(kubectl config get-contexts --no-headers)
         namespace=$(echo "$context_info" | grep "*" | awk '{print $5}')
 
